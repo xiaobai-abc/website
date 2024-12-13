@@ -1,3 +1,6 @@
-.main-container {
-  
+.bg-container {
+  background: url("https://xiaobai-abc.cn/static/images/wallhaven-3lj8qd.jpg")
+    no-repeat;
+  background-size: cover;
+  background-position: center center;
 }

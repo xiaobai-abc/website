@@ -80,4 +80,8 @@ body {
   .dc {
     color: hsl(var(--primary));
   }
+  .fb {
+    /* 滤镜背景 */
+    backdrop-filter: blur(10px);
+  }
 }
