@@ -5,7 +5,7 @@ export default function Footer() {
         Copyright © 2024 小杨 & 
       </p>
       <a
-        className="leading-none"
+        className="leading-none ml-1"
         href="https://beian.mps.gov.cn/#/query/webSearch?code=21021702000707"
         rel="noreferrer"
         target="_blank"

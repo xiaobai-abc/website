@@ -1,6 +1,8 @@
 import Footer from "./components/Footer";
-import styles from "./index.module.css";
+import DrawerContainer from "./components/DrawerContainer";
 import classnames from "classnames";
+import { Toaster } from "@/shadcn-ui/ui/toaster";
+import styles from "./index.module.css";
 import "./style/globals.css";
 import "./style/custom.css";
 
@@ -32,7 +34,9 @@ export default function RootLayout({ children }) {
             {children}
           </div>
         </main>
+        <DrawerContainer></DrawerContainer>
         <Footer></Footer>
+        <Toaster />
       </body>
     </html>
   );
