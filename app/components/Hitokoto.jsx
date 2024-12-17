@@ -24,11 +24,11 @@ export default function Hitokoto() {
         setWrite(data);
       })
       .catch((err) => {
-        toast({
-          title: err,
-          description: "获取失败",
-          action: "诗词"
-        });
+        // toast({
+        //   title: err,
+        //   description: "获取失败",
+        //   action: "诗词"
+        // });
       });
   }, []);
 

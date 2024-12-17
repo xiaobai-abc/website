@@ -5,7 +5,6 @@ import Box from "../ui/Box";
 
 import { useGallery } from "../hooks/useGallery";
 
-
 import { Button } from "@/shadcn-ui/ui/button";
 
 const handlerList = [
@@ -17,14 +16,17 @@ const handlerList = [
 
 export default function HandlerCard() {
   const [] = useState([]);
-  const { open, setOpen } = useGallery();
+  const { open } = useGallery("gallery");
 
-  useEffect(() => {
-    console.log("handlercard");
-  }, []);
+  useEffect(() => {}, []);
 
   function onHandlerClick(item) {
     console.log(item);
+    switch (item.id) {
+      case 1:
+        open();
+        break;
+    }
   }
 
   return (
@@ -34,7 +36,7 @@ export default function HandlerCard() {
           return (
             <div key={item.id} className={cn("flex align-center w-full")}>
               <Box
-                className={cn("p-4 text-base text-center")}
+                className={cn("p-4 text-base text-center cursor-pointer")}
                 onClick={() => onHandlerClick(item)}
               >
                 {item.title}
@@ -43,8 +45,6 @@ export default function HandlerCard() {
           );
         })}
       </div>
-
-      <Button onClick={() => setOpen(true)}>点击</Button>
     </>
   );
 }

@@ -32,13 +32,11 @@ export default function TimeCard() {
   });
 
   useEffect(() => {
-    console.log("useEffect timer card");
-    initTimer();
+    // initTimer();
 
-    // 获取天气相关信息
-    getWeatherInfo();
+    // // 获取天气相关信息
+    // getWeatherInfo();
     return () => {
-      console.log("销毁");
       clearInterval(timer);
     };
   }, []);

@@ -1,5 +1,5 @@
 import Footer from "./components/Footer";
-import DrawerContainer from "./components/DrawerContainer";
+import DrawerPictures from "./components/DrawerPictures";
 import classnames from "classnames";
 import { Toaster } from "@/shadcn-ui/ui/toaster";
 import styles from "./index.module.css";
@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
             {children}
           </div>
         </main>
-        <DrawerContainer></DrawerContainer>
+        <DrawerPictures></DrawerPictures>
         <Footer></Footer>
         <Toaster />
       </body>
