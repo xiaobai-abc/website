@@ -6,7 +6,7 @@ export function BackButton() {
   const router = useRouter();
   function onBack() {
     router.back();
-  }
+  } 
 
   return <Button onClick={onBack}>返回</Button>;
 }

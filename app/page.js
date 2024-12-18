@@ -28,9 +28,9 @@ export default async function Home(props) {
         <div className={cn(`flex-auto mr-10`)}>
           {/* 左侧 */}
           <div className={cn(`head-main`, `flex items-center h-[170px]`)}>
-            <div className={cn(`mr-4 rounded-xl overflow-hidden`)}>
+            <div className="mr-4 rounded-xl overflow-hidden w-[90px] h-[90px]">
               <Image
-                className="w-[90px] h-[90px]"
+                className="w-full h-full"
                 src="https://xiaobai-abc.cn/static/other/head.png"
                 alt="abc"
                 height={90}
@@ -76,13 +76,15 @@ export default async function Home(props) {
 
           <div className={cn("mt-4 h-[200px] flex flex-col")}>
             <h1 className={cn("flex align-center text-lg")}>
-              <Image
-                className="text-white mr-2"
-                width={24}
-                height={24}
-                src={LinkSvg}
-                alt="link"
-              />
+              <div className="w-[24px] h-[24px] mr-2 ">
+                <Image
+                  className="w-full h-auto"
+                  width={24}
+                  height={24}
+                  src={LinkSvg}
+                  alt="link"
+                />
+              </div>
               收录
             </h1>
             <HandlerCard></HandlerCard>

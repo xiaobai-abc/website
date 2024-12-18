@@ -32,6 +32,7 @@ class RequestHttp {
     this.service.interceptors.response.use(
       (response) => {
         const { data, config } = response; // 解构
+
         if (response.status === RequestEnums.OVERDUE) {
           return Promise.reject(data);
         }
@@ -74,6 +75,8 @@ class RequestHttp {
         // const store = useUserStore();
         // userStore.clearToken();
 
+        return Promise.reject(statusText);
+      case 404:
         return Promise.reject(statusText);
       default:
         break;

@@ -1,5 +1,6 @@
 "use client";
 import cn from "classnames";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Box from "../ui/Box";
 
@@ -9,6 +10,10 @@ import { Button } from "@/shadcn-ui/ui/button";
 
 const handlerList = [
   {
+    id: 0,
+    title: "test"
+  },
+  {
     id: 1,
     title: "图库"
   }
@@ -16,6 +21,7 @@ const handlerList = [
 
 export default function HandlerCard() {
   const [] = useState([]);
+  const router = useRouter();
   const { open } = useGallery("gallery");
 
   useEffect(() => {}, []);
@@ -23,6 +29,9 @@ export default function HandlerCard() {
   function onHandlerClick(item) {
     console.log(item);
     switch (item.id) {
+      case 0:
+        router.push("/test");
+        break;
       case 1:
         open();
         break;

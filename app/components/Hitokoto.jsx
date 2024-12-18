@@ -15,6 +15,7 @@ export default function Hitokoto() {
   });
 
   useEffect(() => {
+    return;
     // 获取诗词
     axios
       .get("/wenan-shici")

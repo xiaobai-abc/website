@@ -20,16 +20,16 @@ const states = {};
 const reducer = (state, action) => {
   switch (action.type) {
     case "open":
-      state.open = true;
-      //   states[action.id] = state;
-      return Object.assign({}, state);
+      const v = { ...state, open: true };
+      states[action.id] = v;
+      return v;
     case "close":
-      state.open = false;
-      //   states[action.id] = state;
-      return Object.assign({}, state);
+      const c = { ...state, open: false };
+      states[action.id] = c;
+      return c;
     case "toggle":
       const t = { ...state, open: !state.open };
-      //   states[action.id] = t;
+      states[action.id] = t;
       return Object.assign({}, t);
     default:
       return state;
@@ -39,13 +39,18 @@ const reducer = (state, action) => {
 const dispatch = (action) => {
   const setState = listeners.get(action.id);
   if (setState) {
-    setState((state) => reducer(state, action));
+    // const n = reducer(null, action);
+    // setState(n);
+    setState((state) => {
+      return reducer(state, action);
+    });
   }
 };
 
 const defalutState = { open: false };
 
 function getState(id) {
+  console.log("getState");
   const state = states[id];
   if (state) return state;
   return defalutState;
@@ -56,7 +61,6 @@ export function useGallery(id = genId()) {
   const [state, setState] = useState(defalutState);
 
   useEffect(() => {
-    console.log("useEffect");
     listeners.set(id, setState);
     // 组件卸载时取消订阅
     return () => {
@@ -65,10 +69,6 @@ export function useGallery(id = genId()) {
       delete states[id];
     };
   }, []);
-
-  useEffect(() => {
-    states[id] = state;
-  }, [state]);
 
   return {
     isOpen: getState(id).open,

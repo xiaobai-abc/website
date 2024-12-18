@@ -10,18 +10,15 @@ import "@/utils/zh-cn";
 
 dayjs.locale("zh-cn");
 
-const getYmd = () => dayjs(new Date()).format("YYYY 年 MM 月 DD dddd");
-const getHms = () => dayjs(new Date()).format("HH:mm:ss");
-
 let timer = null;
 
 export default function TimeCard() {
   const { toast } = useToast();
 
   // 年月日
-  const [timerStr, setTimer] = useState(getYmd());
+  const [timerStr, setTimer] = useState("");
   // 时分秒
-  const [timeStr, setTime] = useState(getHms());
+  const [timeStr, setTime] = useState("");
   // 天气
   const [weatherInfo, setWather] = useState({
     city: "",
@@ -31,8 +28,11 @@ export default function TimeCard() {
     windpower: "" // 风力级别
   });
 
+  const getYmd = () => dayjs(new Date()).format("YYYY 年 MM 月 DD dddd");
+  const getHms = () => dayjs(new Date()).format("HH:mm:ss");
+
   useEffect(() => {
-    // initTimer();
+    initTimer();
 
     // // 获取天气相关信息
     // getWeatherInfo();
@@ -78,9 +78,9 @@ export default function TimeCard() {
 
     setTime(getHms());
 
-    timer = setInterval(() => {
-      setTime(getHms());
-    }, 999);
+    // timer = setInterval(() => {
+    //   setTime(getHms());
+    // }, 999);
   }
 
   return (
@@ -97,28 +97,22 @@ export default function TimeCard() {
       </div>
       <span className={cn(`font-normal text-sm text-white text-center`)}>
         {weatherInfo ? (
-          <WeatherEl info={weatherInfo}></WeatherEl>
+          <>
+            <span className="mr-2"> {weatherInfo.city} </span>
+            <span className="mr-2"> {weatherInfo.weather} </span>
+            <span className="mr-2">
+              {weatherInfo.winddirection
+                ? weatherInfo.winddirection + "风"
+                : ""}
+            </span>
+            <span>
+              {weatherInfo.windpower ? weatherInfo.windpower + "级" : ""}
+            </span>
+          </>
         ) : (
           "获取天气信息失败"
         )}
       </span>
     </Box>
   );
-}
-
-function WeatherEl({ info }) {
-  const Element = useMemo(() => {
-    return (
-      <>
-        <span className="mr-2"> {info.city} </span>
-        <span className="mr-2"> {info.weather} </span>
-        <span className="mr-2">
-          {info.winddirection ? info.winddirection + "风" : ""}
-        </span>
-        <span> {info.windpower ? info.windpower + "级" : ""} </span>
-      </>
-    );
-  }, [info]);
-
-  return Element;
 }
