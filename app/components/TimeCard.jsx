@@ -35,7 +35,7 @@ export default function TimeCard() {
     initTimer();
 
     // // 获取天气相关信息
-    // getWeatherInfo();
+    getWeatherInfo();
     return () => {
       clearInterval(timer);
     };
@@ -78,9 +78,9 @@ export default function TimeCard() {
 
     setTime(getHms());
 
-    // timer = setInterval(() => {
-    //   setTime(getHms());
-    // }, 999);
+    timer = setInterval(() => {
+      setTime(getHms());
+    }, 999);
   }
 
   return (

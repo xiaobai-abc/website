@@ -45,7 +45,6 @@ class RequestHttp {
       (error) => {
         const { response } = error;
         // Notification.error(error.message);
-        // console.log(response)
         if (response) {
           return this.handleCode(response.status, response.statusText);
         } else {
@@ -57,12 +56,7 @@ class RequestHttp {
               // Message.error("网络异常~~~");
               break;
           }
-        }
-        if (!window.navigator.onLine) {
-          // router.replace({
-          //   path: "/404",
-          // });
-          return;
+          return Promise.reject(error.message);
         }
       }
     );

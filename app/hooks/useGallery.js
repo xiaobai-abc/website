@@ -50,7 +50,6 @@ const dispatch = (action) => {
 const defalutState = { open: false };
 
 function getState(id) {
-  console.log("getState");
   const state = states[id];
   if (state) return state;
   return defalutState;

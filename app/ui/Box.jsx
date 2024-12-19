@@ -1,7 +1,8 @@
 import cn from "classnames";
+import { forwardRef } from "react";
 
 // 毛玻璃
-export default function Box({ children, className, ...props }) {
+function BoxCC({ children, className, ...props }) {
   return (
     <div
       className={cn(
@@ -19,3 +20,7 @@ export default function Box({ children, className, ...props }) {
 }
 
 export const boxStyle1 = cn("p-8 h-full flex-1");
+
+export default forwardRef((props, ref) => {
+  return <BoxCC ref={ref} {...props}></BoxCC>;
+});

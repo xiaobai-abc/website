@@ -15,7 +15,6 @@ export default function Hitokoto() {
   });
 
   useEffect(() => {
-    return;
     // 获取诗词
     axios
       .get("/wenan-shici")
@@ -25,16 +24,16 @@ export default function Hitokoto() {
         setWrite(data);
       })
       .catch((err) => {
-        // toast({
-        //   title: err,
-        //   description: "获取失败",
-        //   action: "诗词"
-        // });
+        toast({
+          title: err,
+          description: "获取失败",
+          action: "诗词"
+        });
       });
   }, []);
 
   return (
-    <Box className={boxStyle1}>
+    <Box className={cn(boxStyle1, "max-w-[350px]")}>
       <span className={cn(`line-clamp-3 text-base`)}> {write.hitokoto} </span>
       <span className={cn(`text-sm mt-4 text-right font-blod`)}>
         -「&nbsp;{write.from}&nbsp;」
